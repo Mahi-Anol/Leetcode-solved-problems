@@ -1,3 +1,4 @@
+#top down
 class Solution:
     def rob(self, nums: List[int]) -> int:
 
@@ -17,3 +18,17 @@ class Solution:
 
             return memo[curr]
         return find_profit(nums,0)
+    
+
+
+### bottom up
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+
+        memo=[0]*(len(nums)+2)
+        for i in range(len(nums)-1,-1,-1):
+            memo[i]=max(nums[i]+memo[i+2],memo[i+1])
+            # print(memo)
+
+        return memo[0]
+
